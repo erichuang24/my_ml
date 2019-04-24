@@ -2,7 +2,7 @@
 import numpy as np
 
 from rnn.minist_utils import *
-import dnn.updater
+import dnn.basic.updater
 
 
 class MinistTrainer(object):

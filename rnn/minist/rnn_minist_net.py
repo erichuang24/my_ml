@@ -1,6 +1,6 @@
 import numpy as np
 from rnn.baisc.rnn_layer import *
-from dnn.layers import *
+from dnn.basic.layers import *
 from rnn.minist.minist_utils import *
 from rnn.minist.minist_trainer import *
 import matplotlib.pyplot as plt
