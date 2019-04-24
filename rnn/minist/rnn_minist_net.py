@@ -6,7 +6,6 @@ from rnn.minist.minist_trainer import *
 import matplotlib.pyplot as plt
 
 
-
 class MinstRNN(object):
     """
     处理图片说明任务RNN网络
@@ -36,7 +35,7 @@ class MinstRNN(object):
         self.params['Wh'] = np.random.randn(hidden_dim, dim_mul * hidden_dim)
         self.params['Wh'] /= np.sqrt(hidden_dim)
         self.params['b'] = np.zeros(dim_mul * hidden_dim)
-#        self.params['h0'] = np.zeros([100, dim_mul * hidden_dim])
+        #        self.params['h0'] = np.zeros([100, dim_mul * hidden_dim])
 
         # 初始化输出层参数
         self.params['W_vocab'] = np.random.randn(hidden_dim, class_num)
@@ -60,11 +59,15 @@ class MinstRNN(object):
         # captions_in = captions[:, :-1]
         # captions_out = captions[:, 1:]
         [N, H, D] = features.shape
-        # 掩码
-        h0 = np.zeros([N, 1 * 200])
 
         # RNN参数
         Wx, Wh, b = self.params['Wx'], self.params['Wh'], self.params['b']
+
+        #
+        [_, HH] = Wx.shape
+
+        # 掩码
+        h0 = np.zeros([N, HH])
 
         # 隐藏层输出转化矩阵
         W_vocab, b_vocab = self.params['W_vocab'], self.params['b_vocab']
