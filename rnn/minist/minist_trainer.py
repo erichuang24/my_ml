@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 
-from rnn.minist_utils import *
+from rnn.minist.minist_utils import *
 import dnn.basic.updater
 
 
@@ -55,9 +55,9 @@ class MinistTrainer(object):
             extra = ', '.join('"%s"' % k for k in kwargs.keys())
             raise ValueError('Unrecognized arguments %s' % extra)
 
-        if not hasattr(dnn.updater, self.update_rule):
+        if not hasattr(dnn.basic.updater, self.update_rule):
             raise ValueError('Invalid update_rule "%s"' % self.update_rule)
-        self.update_rule = getattr(dnn.updater, self.update_rule)
+        self.update_rule = getattr(dnn.basic.updater, self.update_rule)
 
         self._reset()
 
